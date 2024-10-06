@@ -102,6 +102,55 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ),
+
+        // * --------- FOR Momento ---------
+        // body: Center(
+        //   child: Stack(
+        //     alignment: Alignment.center,
+        //     children: [
+        //       // Background Circle
+        //       Container(
+        //         width: 250,
+        //         height: 250,
+        //         decoration: BoxDecoration(
+        //           // shape: BoxShape.circle,
+        //           gradient: RadialGradient(
+        //             colors: [Colors.yellow, Colors.orange],
+        //           ),
+        //           boxShadow: [
+        //             BoxShadow(
+        //               color: Colors.black.withOpacity(0.5),
+        //               blurRadius: 10,
+        //               spreadRadius: 5,
+        //               offset: Offset(0, 3),
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //       // Image in the center
+        //       Container(
+        //         width: 200,
+        //         height: 200,
+        //         decoration: BoxDecoration(
+        //           // shape: BoxShape.circle,
+        //           border: Border.all(
+        //             color: Colors.white,
+        //             width: 8,
+        //           ),
+        //         ),
+        //         // child: ClipOval(
+        //         child: ClipRect(
+        //           child: Image.asset(
+        //             'assets/da5f3976d8e94521b10740bf5dc2fbf8.png',
+        //             fit: BoxFit.cover,
+        //           ),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+        // * -------------------------------
+
     );
   }
 }
