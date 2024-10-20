@@ -1,4 +1,4 @@
-import 'package:expense_tracker/widgets/expenses_list/expenses_item.dart';
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +42,8 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAppExpenseOverlay() {
     showModalBottomSheet(
+        useSafeArea: true,
+        constraints: const BoxConstraints.expand(),
         isScrollControlled: true,
         context: context,
         builder: (ctx) {
@@ -76,6 +78,7 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
     Widget mainContent =
         const Center(child: Text('No expense found. Start adding some!'));
 
@@ -94,14 +97,71 @@ class _ExpensesState extends State<Expenses> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          const Text('Chart...'),
-          Expanded(
-            child: mainContent,
-          ),
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(expenses: _registeredExpenses),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(expenses: _registeredExpenses)),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            ),
+
+      // * --------- FOR Momento ---------
+      // body: Center(
+      //   child: Stack(
+      //     alignment: Alignment.center,
+      //     children: [
+      //       // Background Circle
+      //       Container(
+      //         width: 250,
+      //         height: 250,
+      //         decoration: BoxDecoration(
+      //           // shape: BoxShape.circle,
+      //           gradient: RadialGradient(
+      //             colors: [Colors.yellow, Colors.orange],
+      //           ),
+      //           boxShadow: [
+      //             BoxShadow(
+      //               color: Colors.black.withOpacity(0.5),
+      //               blurRadius: 10,
+      //               spreadRadius: 5,
+      //               offset: Offset(0, 3),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //       // Image in the center
+      //       Container(
+      //         width: 200,
+      //         height: 200,
+      //         decoration: BoxDecoration(
+      //           // shape: BoxShape.circle,
+      //           border: Border.all(
+      //             color: Colors.white,
+      //             width: 8,
+      //           ),
+      //         ),
+      //         // child: ClipOval(
+      //         child: ClipRect(
+      //           child: Image.asset(
+      //             'assets/da5f3976d8e94521b10740bf5dc2fbf8.png',
+      //             fit: BoxFit.cover,
+      //           ),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      // * -------------------------------
     );
   }
 }
